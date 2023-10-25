@@ -37,16 +37,17 @@ router.register(r'users', UserViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(router.urls)),
+    # Rutas api
+    path('api-users/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    # Otras rutas api
     path('api-generales/', include('generales.urls')),
-    path('ksb/', views.helloWorld,name="inicio"),
-    path('ksb/login/',views.LoginPage, name='login_page'),
-    path('ksb/home/',views.homePage, name='home_page'),
-    path('ksb/singUp/',views.SingUpPage, name='singUp'),
-    path('ksb/projects/',views.projectPage, name='projects'),
-    path('ksb/jobs/',views.jobsPage, name='jobs'),
-    path('ksb/help/',views.helpPage,name='help'),
+    # Rutas front
+    path('', views.helloWorld,name="inicio"),
+    path('login/',views.LoginPage, name='login_page'),
+    path('home/',views.homePage, name='home_page'),
+    path('singUp/',views.SingUpPage, name='singUp'),
+    path('projects/',views.projectPage, name='projects'),
+    path('jobs/',views.jobsPage, name='jobs'),
+    path('help/',views.helpPage,name='help'),
     path('logout/',views.cerrarSesion,name='logOut')
 ]
