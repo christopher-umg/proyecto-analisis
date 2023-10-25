@@ -88,9 +88,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'mssql',
         'NAME': 'sinergia',
-        'USER': 'admin',
-        'PASSWORD': 'admin123',
-        'HOST': 'localhost',
+        'USER': 'analisisUMGSinergia',
+        'PASSWORD': 'MyC0mp13xP@ssw0rd!',
+        'HOST': 'umg-analisis.database.windows.net',
         'AUTOCOMMIT': 'False',
         'AUTOCOMMIT': 'no',          
         'OPTIONS':{

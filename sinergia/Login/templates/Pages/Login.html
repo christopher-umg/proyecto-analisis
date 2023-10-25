@@ -8,9 +8,10 @@
 <!--Bootstrap Icon-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <!--Estilos Generales-->
-    <link rel="stylesheet" href="../Css/General.css">
+    {% load static %}
+    <link rel="stylesheet" type="text/css"  href="{% static 'css/general.css' %}">
     <!--Estilos Login-->
-    <link rel="stylesheet" href="../Css/Login.css">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
     <title>Inicio</title>
 </head>
 <body>
@@ -19,21 +20,21 @@
             <nav class="navbar navbar-expand-lg bg-dark">
                 <ul class="nav ">
                     <li class="nav-item">
-                        <a href="../index.html" class="nav-link active text-center">
+                        <a href="{% url 'inicio' %}" class="nav-link active text-center">
                             <i class="bi bi-house-door-fill "></i>
                             <h6>inicio</h6>
                         </a>
                         
                     </li>
                     <li class="nav-item">
-                        <a href="Login.html" class="nav-link text-center">
+                        <a href="{% url 'login_page' %}" class="nav-link text-center">
                         <i class="bi bi-person-fill"></i>
                         <h6>Iniciar sesion</h6>
                         </a>
                         
                     </li>
                     <li class="nav-item">
-                        <a href="SignUp.html" class="nav-link text-center">
+                        <a href="{% url 'singUp' %}" class="nav-link text-center">
                             <i class="bi bi-person-fill-add"></i>
                             <h6>Registro</h6>
                         </a>
@@ -49,20 +50,24 @@
     </header>
     <main class="bg-grey py-5">
         <div class="wrapper">
-            <form class="p-3 mt-3">
+            <form class="p-3 mt-3" method="POST">
+                {% csrf_token %}
                 <div class="form-field d-flex align-items-center">
                     <span class="far fa-user"></span>
-                    <input type="text" name="userName" id="userName" placeholder="Username">
+                    <input type="text" name="userName" id="userName" required placeholder="Username">
                 </div>
                 <div class="form-field d-flex align-items-center">
                     <span class="fas fa-key"></span>
-                    <input type="password" name="password" id="pwd" placeholder="Password">
+                    <input type="password" name="password" id="pwd" required placeholder="Password">
                 </div>
                 <button class="btn mt-3">Login</button>
             </form>
             <div class="text-center fs-6">
                 <span>Olvidaste tu contraseña? <a href="#">Clic aquí</a></span>
             </div>
+        </div>
+        <div class="alert alert-danger">
+            {{error}}
         </div>
     </main>
     <footer class="bg-blue text-light text-center hfooter-sb">

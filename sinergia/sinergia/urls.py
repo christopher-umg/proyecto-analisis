@@ -19,6 +19,7 @@ from django.contrib.auth.models import User
 from rest_framework import routers, serializers, viewsets
 from Login import views
 
+
 # Serializers define the API representation.
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -40,6 +41,12 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     # Otras rutas api
     path('api-generales/', include('generales.urls')),
-    path('ksb/', views.helloWorld),
-    path('ksb/', views.LoginPage, name='login_page')
+    path('ksb/', views.helloWorld,name="inicio"),
+    path('ksb/login/',views.LoginPage, name='login_page'),
+    path('ksb/home/',views.homePage, name='home_page'),
+    path('ksb/singUp/',views.SingUpPage, name='singUp'),
+    path('ksb/projects/',views.projectPage, name='projects'),
+    path('ksb/jobs/',views.jobsPage, name='jobs'),
+    path('ksb/help/',views.helpPage,name='help'),
+    path('logout/',views.cerrarSesion,name='logOut')
 ]
