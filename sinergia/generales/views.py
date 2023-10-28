@@ -71,11 +71,21 @@ class InstitucionEducativaViewSet(viewsets.ModelViewSet):
 class ProyectoViewSet(viewsets.ModelViewSet):
     authentication_classes = [SessionAuthentication, BasicAuthentication]
     permission_classes = [IsAuthenticated]
-    queryset = Proyecto.objects.filter(IdProyecto=0)
+    queryset = Proyecto.objects.all()
     serializer_class = ProyectoSerializer
+
+    def get_queryset(self):
+        if self.action == 'list':
+            return Proyecto.objects.filter(IdUsuario=0)
+        return Proyecto.objects.all()
 
 class PostulacionEmpleoViewSet(viewsets.ModelViewSet):
     authentication_classes = [SessionAuthentication, BasicAuthentication]
     permission_classes = [IsAuthenticated]
-    queryset = PostulacionEmpleo.objects.filter(IdPostulacionEmpleo=0)
+    queryset = PostulacionEmpleo.objects.all()
     serializer_class = PostulacionEmpleoSerializer
+
+    def get_queryset(self):
+        if self.action == 'list':
+            return PostulacionEmpleo.objects.filter(IdEmpresa=0)
+        return PostulacionEmpleo.objects.all()
